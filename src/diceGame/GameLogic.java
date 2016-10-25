@@ -34,20 +34,20 @@ public class GameLogic {
 		
 	}
 	
-//	private Player playTurn(Player player){
-//		
-//	}
-//	
-//	private void doScoreChange(Square square){
-//		
-//	}
-//	
-//	private boolean doExtraTurn(Square square){
-//		
-//	}
-//	
-//	private int[] declareWinner(){
-//		
-//	}
+	private Player playTurn(Player player){
+		
+	}
+	
+	private void doScoreChange(Square square){
+		
+	}
+	
+	private boolean doExtraTurn(Square square){
+		
+	}
+	
+	private int[] declareWinner(){
+		
+	}
 	
 }
