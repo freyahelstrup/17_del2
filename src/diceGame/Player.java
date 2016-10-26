@@ -20,6 +20,10 @@ public class Player {
 	}
 	
 	public void setBalance(int balance){
+		//player's balance should never be negative
+		if (balance < 0){
+			balance = 0;
+		}
 		this.balance = balance;
 	}
 	

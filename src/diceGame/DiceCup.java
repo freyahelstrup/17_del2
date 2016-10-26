@@ -10,8 +10,8 @@ public class DiceCup {
 		this.setAllValuesRandom();
 	}
 	
-	public int getSingleValue(int place){
-		return values[place];
+	public int[] getValues(){
+		return values;
 	}
 	
 	public void setSingleValue(int place, int newValue){

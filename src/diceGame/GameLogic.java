@@ -1,6 +1,7 @@
 package diceGame;
 
 public class GameLogic {
+	private Board board;
 	private Player[] players;
 	private DiceCup dice;
 	private final int diceAmount;
@@ -9,10 +10,11 @@ public class GameLogic {
 	public GameLogic(){
 		diceAmount = 2;		diceSides = 6;
 		dice = new DiceCup(diceSides,diceAmount);
+		board = new Board();
 		
-		resetGame(2,1000);
+		resetGame(3,1000);
 		
-		
+		playGame();
 	}
 	
 	public void resetGame(int playerAmount, int startBalance){
@@ -31,23 +33,62 @@ public class GameLogic {
 	}
 	
 	public void playGame(){
+		boolean winnerFound = false;
+		Player currentPlayer, nextPlayer;
 		
+		//first player is player 1
+		currentPlayer = players[0];
+		
+		while (winnerFound == false){
+			nextPlayer = playTurn(currentPlayer);
+			System.out.println("Spiller\tBalance");
+			for (int i = 0; i < players.length; i++){
+				System.out.println(players[i].getID() + "\t" + players[i].getBalance());
+			}
+			
+			if (currentPlayer.getBalance() >= 3000){
+				winnerFound = true;
+			}
+			
+			currentPlayer = nextPlayer;
+		}
 	}
 	
-	private Player playTurn(Player player){
+	private Player playTurn(Player currentPlayer){
+		Square currentSquare;
+		dice.setAllValuesRandom();
+		System.out.println("\nTerningerne slog: " + dice.getDiceSum());
 		
-	}
-	
-	private void doScoreChange(Square square){
+		currentSquare = board.getSquares()[dice.getDiceSum()-2];
 		
-	}
-	
-	private boolean doExtraTurn(Square square){
+		System.out.println("Spiller " + currentPlayer.getID() + " er landet på " + currentSquare.getName());
 		
-	}
-	
-	private int[] declareWinner(){
+		currentPlayer.setBalance(currentPlayer.getBalance() + currentSquare.getScoreChange());
 		
+		if (currentSquare.getEffect() == 't'){
+			System.out.println("Spiller " + currentPlayer.getID() + " har fået en ekstra tur!");
+			return currentPlayer;
+		}
+		else{
+			if (currentPlayer.getID() == players.length){
+				return players[0];
+			}
+			else{
+				return players[currentPlayer.getID()-1+1];
+			}
+		}	
 	}
+//	
+//	private void doScoreChange(Square square){
+//		
+//	}
+//	
+//	private boolean doExtraTurn(Square square){
+//		
+//	}
+//	
+//	private int[] declareWinner(){
+//		
+//	}
 	
 }
