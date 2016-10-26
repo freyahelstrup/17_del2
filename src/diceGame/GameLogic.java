@@ -6,15 +6,16 @@ public class GameLogic {
 	private DiceCup dice;
 	private final int diceAmount;
 	private final int diceSides;
+	private final int winBalance;
 	
 	public GameLogic(){
 		diceAmount = 2;		diceSides = 6;
 		dice = new DiceCup(diceSides,diceAmount);
 		board = new Board();
 		
-		resetGame(3,1000);
+		winBalance = 3000;
 		
-		playGame();
+		resetGame(2,1000);
 	}
 	
 	public void resetGame(int playerAmount, int startBalance){
@@ -23,60 +24,93 @@ public class GameLogic {
 			players[i] = new Player(i+1,startBalance);
 		}
 	}
-	
-	public Player getPlayer(int place){
-		return players[place];
-	}
-	
-	public void setPlayer(int place, Player player){
-		players[place] = player;
-	}
+//	
+//	public Player getPlayer(int place){
+//		return players[place];
+//	}
+//	
+//	public void setPlayer(int place, Player player){
+//		players[place] = player;
+//	}
 	
 	public void playGame(){
-		boolean winnerFound = false;
+		boolean lastTurn = false;
+		int maxBalance = 0;
+		int winnerAmount = 0;
 		Player currentPlayer, nextPlayer;
 		
 		//first player is player 1
 		currentPlayer = players[0];
 		
-		while (winnerFound == false){
+		while (lastTurn == false || (lastTurn == true && currentPlayer != players[0])){
+			System.out.println(Messages.printNextPlayer(currentPlayer));
 			nextPlayer = playTurn(currentPlayer);
+			
 			System.out.println("Spiller\tBalance");
 			for (int i = 0; i < players.length; i++){
 				System.out.println(players[i].getID() + "\t" + players[i].getBalance());
 			}
 			
-			if (currentPlayer.getBalance() >= 3000){
-				winnerFound = true;
+			System.out.println();
+
+			if (currentPlayer.getBalance() >= winBalance){
+				lastTurn = true;
+				
+				if (currentPlayer.getBalance() > maxBalance){
+					maxBalance = currentPlayer.getBalance();
+					winnerAmount = 1;
+				}	
+				else if (currentPlayer.getBalance() == maxBalance){
+					winnerAmount++;
+				}	
 			}
 			
 			currentPlayer = nextPlayer;
 		}
+		
+		Player[] winners = new Player[winnerAmount];
+		
+		System.out.println(maxBalance);
+		
+		int winnerArrayIndex = 0;
+		for (int i = 0; i<players.length;i++){
+			if (players[i].getBalance() == maxBalance){
+				winners[winnerArrayIndex] = players[i];
+				winnerArrayIndex++;
+			}
+		}
+		
+		System.out.println(Messages.printWinners(winners));
+
+		resetGame(2,1000);
 	}
 	
 	private Player playTurn(Player currentPlayer){
 		Square currentSquare;
 		dice.setAllValuesRandom();
-		System.out.println("\nTerningerne slog: " + dice.getDiceSum());
+//		System.out.println("\nSpiller " + currentPlayer.getID() + " slog: " + dice.getDiceSum());
 		
 		currentSquare = board.getSquares()[dice.getDiceSum()-2];
 		
-		System.out.println("Spiller " + currentPlayer.getID() + " er landet på " + currentSquare.getName());
+		System.out.println(Messages.getSquareMessages()[dice.getDiceSum()-2]);
 		
 		currentPlayer.setBalance(currentPlayer.getBalance() + currentSquare.getScoreChange());
 		
+		Player nextPlayer;
+		
 		if (currentSquare.getEffect() == 't'){
-			System.out.println("Spiller " + currentPlayer.getID() + " har fået en ekstra tur!");
-			return currentPlayer;
+			nextPlayer = currentPlayer;
 		}
 		else{
 			if (currentPlayer.getID() == players.length){
-				return players[0];
+				nextPlayer = players[0];
 			}
 			else{
-				return players[currentPlayer.getID()-1+1];
+				nextPlayer = players[currentPlayer.getID()-1+1];
 			}
-		}	
+		}
+		
+		return nextPlayer;
 	}
 //	
 //	private void doScoreChange(Square square){
