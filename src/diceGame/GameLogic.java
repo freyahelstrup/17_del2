@@ -1,12 +1,12 @@
 package diceGame;
 
 public class GameLogic {
-	private Board board;
-	private Player[] players;
-	private DiceCup dice;
-	private final int diceAmount;
-	private final int diceSides;
-	private final int winBalance;
+	private Board board; //An instance of the Board class
+	private Player[] players; //An array of Players
+	private DiceCup dice; //An instance of the DiceCup class
+	private final int diceAmount; //The amount of dice used by the game
+	private final int diceSides; //The number of sides the dice can have
+	private final int winBalance; //The balance needed for the player to win the game
 	
 	public GameLogic(){
 		diceAmount = 2;		diceSides = 6;
