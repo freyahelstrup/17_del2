@@ -15,7 +15,7 @@ public class GameLogic {
 		dice = new DiceCup(diceSides,diceAmount);
 		board = new Board();
 		
-		winBalance = 1100;
+		winBalance = 3000;
 		
 		resetGame(2,1000);
 	}
