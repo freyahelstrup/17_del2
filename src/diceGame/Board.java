@@ -12,6 +12,7 @@ public class Board {
 		squares = new Square[11];
 		fields = new Field[11];
 		
+		//Board now creates the GUI board as well
 		for(int i = 0; i < getSquaresLength(); i++){
 			squares[i] = new Square(SquareData.getName(i), SquareData.getEffect(i), SquareData.getScoreChange(i));
 			fields[i] = new Street.Builder()
