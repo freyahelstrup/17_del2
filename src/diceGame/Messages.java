@@ -89,14 +89,12 @@ public class Messages {
 			returnValue += getGMessage(2);
 		}
 		
-		/*WARNING*/
-		/*THIS METHOD WILL ALWAYS PRINT MESSAGE 4 ONE MORE TIME THAT WE WANT*/
-		for (int i = 0; i<winners.length; i++){
+		for (int i = 0; i<winners.length-1; i++){
 			returnValue += getGMessage(3) + winners[i].getID() + getGMessage(4);
 		}
+		returnValue += getGMessage(3) + winners[winners.length-1].getID() + ".";
 		
-		
-		returnValue = returnValue.substring(0, returnValue.length()-4) + ".";
+		//returnValue = returnValue.substring(0, returnValue.length()-4) + ".";
 		
 		return returnValue;
 	}
