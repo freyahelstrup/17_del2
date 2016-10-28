@@ -48,7 +48,8 @@ public class Messages {
 			" har nu ",				//6
 			" point.",				//7
 			"Slå med terningerne",	//8
-			"Vinderen er "			//9
+			"Vinderen er ",			//9
+			"Spiller\tBalance"		//10
 			
 	};
 	
@@ -106,6 +107,16 @@ public class Messages {
 	
 	public static String getBalance(Player player){
 		return getGMessage(5) + player.getID() + getGMessage(6) + player.getBalance() + getGMessage(7);
+	}
+	
+	public static String getPlayers(Player[] players){
+		String returnValue = Messages.getGMessage(10);
+		
+		for (int i = 0; i<players.length;i++){
+			returnValue += "\n" + players[i].getID() + "\t" + players[i].getBalance();
+		}
+		
+		return returnValue;
 	}
 	
 }
