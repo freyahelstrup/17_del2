@@ -1,15 +1,30 @@
 package diceGame;
 
+import desktop_fields.*;
+import desktop_resources.*;
+import java.awt.Color;
+
 public class Board {
 	private Square[] squares;
+	private Field[] fields;
 	
 	public Board(){
 		squares = new Square[11];
-
+		fields = new Field[11];
+		
 		for(int i = 0; i < getSquaresLength(); i++){
 			squares[i] = new Square(SquareData.getName(i), SquareData.getEffect(i), SquareData.getScoreChange(i));
+			fields[i] = new Street.Builder()
+							.setBgColor(Color.LIGHT_GRAY)
+							.setTitle(SquareData.getName(i))
+							.setDescription(SquareData.getName(i))
+							.setSubText(SquareData.getScoreChange(i) + "")
+							.build();
 		}
+			
+		GUI.create(fields);
 		
+			
 		/*
 		squares[0] = new Square("Tower",'0',250);
 		squares[1] = new Square("Crater",'0',-100);

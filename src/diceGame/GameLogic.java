@@ -1,5 +1,7 @@
 package diceGame;
 
+import desktop_resources.GUI;
+
 public class GameLogic {
 	private Board board; //An instance of the Board class
 	private Player[] players; //An array of Players
@@ -13,7 +15,7 @@ public class GameLogic {
 		dice = new DiceCup(diceSides,diceAmount);
 		board = new Board();
 		
-		winBalance = 3000;
+		winBalance = 1100;
 		
 		resetGame(2,1000);
 	}
@@ -43,15 +45,16 @@ public class GameLogic {
 		currentPlayer = players[0];
 		
 		while (lastTurn == false || (lastTurn == true && currentPlayer != players[0])){
-			System.out.println(Messages.printNextPlayer(currentPlayer));
+			GUI.getUserButtonPressed(Messages.printNextPlayer(currentPlayer), Messages.getGeneralMessages()[8]);
+//			System.out.println(Messages.printNextPlayer(currentPlayer));
 			nextPlayer = playTurn(currentPlayer);
 			
-			System.out.println("Spiller\tBalance");
-			for (int i = 0; i < players.length; i++){
-				System.out.println(players[i].getID() + "\t" + players[i].getBalance());
-			}
+//			System.out.println("Spiller\tBalance");
+//			for (int i = 0; i < players.length; i++){
+//				System.out.println(players[i].getID() + "\t" + players[i].getBalance());
+//			}
 			
-			System.out.println();
+//			System.out.println();
 
 			if (currentPlayer.getBalance() >= winBalance){
 				lastTurn = true;
@@ -70,8 +73,6 @@ public class GameLogic {
 		
 		Player[] winners = new Player[winnerAmount];
 		
-		System.out.println(maxBalance);
-		
 		int winnerArrayIndex = 0;
 		for (int i = 0; i<players.length;i++){
 			if (players[i].getBalance() == maxBalance){
@@ -80,7 +81,8 @@ public class GameLogic {
 			}
 		}
 		
-		System.out.println(Messages.printWinners(winners));
+		GUI.showMessage(Messages.printWinners(winners));
+//		System.out.println(Messages.printWinners(winners));
 
 		resetGame(2,1000);
 	}
@@ -89,12 +91,16 @@ public class GameLogic {
 		Square currentSquare;
 		dice.setAllValuesRandom();
 //		System.out.println("\nSpiller " + currentPlayer.getID() + " slog: " + dice.getDiceSum());
+
+		GUI.setDice(dice.getValues()[0], dice.getValues()[1]);
 		
 		currentSquare = board.getSquares()[dice.getDiceSum()-2];
 		
-		System.out.println(Messages.getSquareMessages()[dice.getDiceSum()-2]);
+//		System.out.println(Messages.getSquareMessages()[dice.getDiceSum()-2]);
 		
 		currentPlayer.setBalance(currentPlayer.getBalance() + currentSquare.getScoreChange());
+
+		GUI.showMessage(Messages.getSMessage(dice.getDiceSum()-2) + "\n\n" + Messages.getBalance(currentPlayer));
 		
 		Player nextPlayer;
 		

@@ -43,7 +43,12 @@ public class Messages {
 			"'s tur.",				//1
 			"Vinderne er ",			//2
 			"spiller ",				//3
-			" og "					//4
+			" og ",					//4
+			"Spiller ",				//5
+			" har nu ",				//6
+			" point.",				//7
+			"Slå med terningerne",	//8
+			"Vinderen er "			//9
 			
 	};
 	
@@ -83,7 +88,7 @@ public class Messages {
 		String returnValue = "";
 		
 		if (winners.length == 1){
-			returnValue += getGMessage(2);
+			returnValue += getGMessage(9);
 		}
 		else {
 			returnValue += getGMessage(2);
@@ -97,6 +102,10 @@ public class Messages {
 		//returnValue = returnValue.substring(0, returnValue.length()-4) + ".";
 		
 		return returnValue;
+	}
+	
+	public static String getBalance(Player player){
+		return getGMessage(5) + player.getID() + getGMessage(6) + player.getBalance() + getGMessage(7);
 	}
 	
 }
