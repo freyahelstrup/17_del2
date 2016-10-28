@@ -2,10 +2,10 @@ package diceGame;
 
 public class SquareData {
 
-	private String[] names = Messages.getSquareNames(); 
+	private static String[] names = Messages.getSquareNames(); 
 	//To make translation easier, the names must come from the Messages class
 	
-	private char[] effects = {
+	private static char[] effects = {
 			
 			' ',	//0
 			' ',	//1
@@ -22,7 +22,7 @@ public class SquareData {
 	};
 	
 
-	private int[] ScoreChanges = {
+	private static int[] scoreChanges = {
 			
 			250,	//0
 			-100,	//1
@@ -38,21 +38,21 @@ public class SquareData {
 			
 	};
 	
-	public String getName(int place){
+	public static String getName(int place){
 	
 		return names[place];
 		
 	}
 	
-	public char getEffect(int place){
+	public static char getEffect(int place){
 		
 		return effects[place];
 		
 	}
 	
-	public int getScoreChange(int place){
+	public static int getScoreChange(int place){
 		
-		return ScoreChanges[place];
+		return scoreChanges[place];
 		
 	}
 
