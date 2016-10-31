@@ -8,8 +8,8 @@ public class CreateGame {
 
 		GameLogic game = new GameLogic();
 
-		while (GUI.getUserButtonPressed("Vil du starte et nyt spil?", "Ja", "Nej") == "Ja") {
-			game.resetGame(6, 2999);
+		while (GUI.getUserButtonPressed("Dette er et terningespil for to spillere. Spillet vindes ved at opnå en balance på 3000 først.\n\nVil du starte et nyt spil?", "Ja", "Nej") == "Ja") {
+			game.resetGame(2, 1000);
 			game.playGame();
 		}
 		
