@@ -25,7 +25,7 @@ public class GameLogic {
 		mode = 0;
 	}
 	
-	public GameLogic(int mode){
+	public GameLogic(int mode, int[] results){
 		diceAmount = 2;		diceSides = 6;
 		dice = new DiceCup(diceSides,diceAmount);
 		board = new Board();
@@ -34,6 +34,7 @@ public class GameLogic {
 		
 		//TESTVARIABLES
 		this.mode = mode;
+		this.results = results;
 	}
 	
 	public void resetGame(int playerAmount, int startBalance){
