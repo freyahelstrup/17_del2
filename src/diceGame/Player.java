@@ -11,6 +11,11 @@ public class Player {
 	{
 		
 		this.id = id;
+		
+		//player's balance should never be negative
+		if (balance < 0){
+			balance = 0;
+		}
 		this.balance = balance;
 		
 	}
