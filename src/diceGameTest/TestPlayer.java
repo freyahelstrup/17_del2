@@ -1,4 +1,6 @@
-package diceGame;
+package diceGameTest;
+
+import diceGame.Player;
 
 import static org.junit.Assert.*;
 
