@@ -11,7 +11,7 @@ public class GameLogic {
 	private final int winBalance; //The balance needed for the player to win the game
 	
 	//TESTVARIABLE
-	private final int mode;
+	private final boolean testMode;
 	private int [] results = {}; 
 	
 	public GameLogic(){
@@ -22,10 +22,10 @@ public class GameLogic {
 		winBalance = 3000;
 		
 		//TESTVARIABLES
-		mode = 0;
+		testMode = false;
 	}
 	
-	public GameLogic(int mode, int[] results){
+	public GameLogic(boolean testMode, int[] results){
 		diceAmount = 2;		diceSides = 6;
 		dice = new DiceCup(diceSides,diceAmount);
 		board = new Board();
@@ -33,7 +33,7 @@ public class GameLogic {
 		winBalance = 3000;
 		
 		//TESTVARIABLES
-		this.mode = mode;
+		this.testMode = testMode;
 		this.results = results;
 	}
 	
@@ -67,7 +67,7 @@ public class GameLogic {
 		while (lastTurn == false || (lastTurn == true && currentPlayer != players[0])){
 			GUI.getUserButtonPressed(Messages.getPlayers(players) + "\n\n" + Messages.printNextPlayer(currentPlayer), Messages.getGeneralMessages()[8]);
 //			System.out.println(Messages.printNextPlayer(currentPlayer));
-			nextPlayer = playTurn(currentPlayer, mode, resultCounter);
+			nextPlayer = playTurn(currentPlayer, testMode, resultCounter);
 			resultCounter++;
 			
 			System.out.println("Spiller\tBalance");
@@ -107,7 +107,7 @@ public class GameLogic {
 
 	}
 	
-	private Player playTurn(Player currentPlayer, int mode, int resultCounter){
+	private Player playTurn(Player currentPlayer, boolean testMode, int resultCounter){
 		Square currentSquare;
 		dice.setAllValuesRandom();
 //		System.out.println("\nSpiller " + currentPlayer.getID() + " slog: " + dice.getDiceSum());
@@ -115,7 +115,7 @@ public class GameLogic {
 		GUI.setDice(dice.getValues()[0], dice.getValues()[1]);
 		
 		//If the mode is not 0 and the result counter is within the bounds of the array, then make the square equal the result on the resultcounter's place
-		if(mode != 0 && resultCounter < results.length){
+		if(testMode == true && resultCounter < results.length){
 			currentSquare = board.getSquares()[results[resultCounter]];
 		}
 		//If the mode is 0 or the resultCounter has gone outside of the length of the array, then the result is random
