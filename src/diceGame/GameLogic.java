@@ -116,7 +116,7 @@ public class GameLogic {
 		
 		//If the mode is not 0 and the result counter is within the bounds of the array, then make the square equal the result on the resultcounter's place
 		if(testMode == true && resultCounter < results.length){
-			currentSquare = board.getSquares()[results[resultCounter]];
+			currentSquare = board.getSquares()[results[resultCounter]-2];
 		}
 		//If the mode is 0 or the resultCounter has gone outside of the length of the array, then the result is random
 		else{
