@@ -161,4 +161,8 @@ public class GameLogic {
 //		
 //	}
 	
+	public Player getPlayer(int place){
+		return players[place];
+	}
+	
 }
