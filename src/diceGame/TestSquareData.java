@@ -6,7 +6,7 @@ import org.junit.Test;
 public class TestSquareData {
 
 	@Test //TC41
-	public void test() {
+	public void testEffects() {
 		
 	char[] testEffects = {
 			' ',	
@@ -27,9 +27,11 @@ public class TestSquareData {
 			effectTestPassed = false;
 		}
 	}
+	assertTrue("Error in effectTest",effectTestPassed);
+}	
 	
-	
-	
+	@Test //TC42
+	public void testNames() {
 	String[] testNames = {
 			"Tårn",					
 			"Krater",				
@@ -50,8 +52,9 @@ public class TestSquareData {
 			namesTestPassed = false;
 		}
 	}
-	
-	
+	assertTrue("Error in namesTest",namesTestPassed);
+}	
+	@Test public void testScoreChanges() {
 
 		int[] testScoreChanges = {
 				250,	
@@ -68,16 +71,15 @@ public class TestSquareData {
 				
 				};
 		boolean scoreChangesTestPassed = true;
+		
 		for(int i=0; i<testScoreChanges.length;i++){
 			if(SquareData.getScoreChange(i) != testScoreChanges [i]){
 				scoreChangesTestPassed = false;
 			}
-		}
 		
-		assertTrue("Error in effectTest",effectTestPassed);
-		assertTrue("Error in namesTest",namesTestPassed);
 		assertTrue("Error in scoreChangesTest",scoreChangesTestPassed);
 		}
 	}
+}
 
 
