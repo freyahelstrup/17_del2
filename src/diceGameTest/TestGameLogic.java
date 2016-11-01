@@ -5,12 +5,16 @@ import diceGame.*;
 
 import org.junit.Test;
 
+import desktop_resources.GUI;
+
 public class TestGameLogic {
 
 	@Test
 	public void testCase21() {
 		int [] results = {12, 3};
 		GameLogic game = new GameLogic(true, results);
+		
+		GUI.getUserButtonPressed("","TC21");
 		
 		game.resetGame(2, 2900);
 		game.playGame();
@@ -27,6 +31,8 @@ public class TestGameLogic {
 		int [] results = {12, 12};
 		GameLogic game = new GameLogic(true, results);
 		
+		GUI.getUserButtonPressed("","TC22");
+		
 		game.resetGame(2, 2900);
 		game.playGame();
 		
@@ -41,6 +47,8 @@ public class TestGameLogic {
 		int [] results = {12, 2};
 		GameLogic game = new GameLogic(true, results);
 		
+		GUI.getUserButtonPressed("","TC23");
+		
 		game.resetGame(2, 2900);
 		game.playGame();
 		
@@ -54,6 +62,8 @@ public class TestGameLogic {
 	public void testCase24(){
 		int [] results = {10, 12, 5};
 		GameLogic game = new GameLogic(true, results);
+		
+		GUI.getUserButtonPressed("","TC24");
 		
 		game.resetGame(2, 2900);
 		game.playGame();
