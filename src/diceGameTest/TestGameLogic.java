@@ -74,4 +74,32 @@ public class TestGameLogic {
 		assertEquals(players[1].getBalance(), 2880);
 	}
 
+	@Test
+	public void testCase25(){
+		int [] results = {2, 12};
+		GameLogic game = new GameLogic(true, results);
+		
+		GUI.getUserButtonPressed("","TC25");
+		
+		game.resetGame(2, 2900);
+		game.playGame();
+		
+		Player[] players = game.getPlayers();
+		
+		assertEquals(players[0].getBalance(), 3150);
+		assertEquals(players[1].getBalance(), 3550);
+	}
+	
+	@Test
+	public void testCase26(){
+		GameLogic game = new GameLogic();
+		
+		game.resetGame(2, 1000);
+
+		Player[] players = game.getPlayers();
+		
+		assertEquals(players[0].getBalance(), 1000);
+		assertEquals(players[1].getBalance(), 1000);
+		assertEquals(players.length,2);
+	}
 }
