@@ -49,8 +49,10 @@ public class Messages {
 			" point.",				//7
 			"Slå med terningerne",	//8
 			"Vinderen er ",			//9
-			"Spiller\tBalance"		//10
-			
+			"Spiller\tBalance",		//10
+			"Dette er et terningespil for to spillere. Spillet vindes ved at opnå en balance på 3000 først.\n\nVil du starte et nyt spil?",
+			"Ja",					//12
+			"Nej"					//13
 	};
 	
 	//get functions for the entire array of messages -------------------------------
