@@ -36,7 +36,7 @@ public class TestDiceCup {
 	}
 	
 	/***************************************
- 	TC03
+ 	TC02
  	Test to see if dice returns the 6 values
  	randomly, so none is more frequent.
  	We test 60,000 rolls, and therefore 
