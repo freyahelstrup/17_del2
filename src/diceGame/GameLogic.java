@@ -141,7 +141,7 @@ public class GameLogic {
 				nextPlayer = players[0];
 			}
 			else{
-				nextPlayer = players[currentPlayer.getID()-1+1];
+				nextPlayer = players[currentPlayer.getID()];
 			}
 		}
 		
