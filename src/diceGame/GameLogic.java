@@ -70,12 +70,12 @@ public class GameLogic {
 			nextPlayer = playTurn(currentPlayer, testMode, resultCounter);
 			resultCounter++;
 			
-			System.out.println("Spiller\tBalance");
-			for (int i = 0; i < players.length; i++){
-				System.out.println(players[i].getID() + "\t" + players[i].getBalance());
-			}
+//			System.out.println("Spiller\tBalance");
+//			for (int i = 0; i < players.length; i++){
+//				System.out.println(players[i].getID() + "\t" + players[i].getBalance());
+//			}
 			
-			System.out.println();
+//			System.out.println();
 
 			if (currentPlayer.getBalance() >= winBalance){
 				lastTurn = true;
