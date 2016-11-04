@@ -112,19 +112,18 @@ public class GameLogic {
 		dice.setAllValuesRandom();
 //		System.out.println("\nSpiller " + currentPlayer.getID() + " slog: " + dice.getDiceSum());
 
-		GUI.setDice(dice.getValues()[0], dice.getValues()[1]);
-		
 		//If the mode is not 0 and the result counter is within the bounds of the array, then make the square equal the result on the resultcounter's place
 		if(testMode == true && resultCounter < results.length){
 			currentSquare = board.getSquares()[results[resultCounter]-2];
+			GUI.displayChanceCard(Messages.getSquareName(results[resultCounter]-2) + "<br><br>" + Messages.getSMessage(results[resultCounter]-2));
 		}
 		//If the mode is 0 or the resultCounter has gone outside of the length of the array, then the result is random
 		else{
+			GUI.setDice(dice.getValues()[0], dice.getValues()[1]);
 			currentSquare = board.getSquares()[dice.getDiceSum()-2];
+			GUI.displayChanceCard(Messages.getSquareName(dice.getDiceSum()-2) + "<br><br>" + Messages.getSMessage(dice.getDiceSum()-2));
 		}
 		
-		
-		GUI.displayChanceCard(Messages.getSquareName(dice.getDiceSum()-2) + "<br><br>" + Messages.getSMessage(dice.getDiceSum()-2));
 		
 //		System.out.println(Messages.getSquareMessages()[dice.getDiceSum()-2]);
 		
